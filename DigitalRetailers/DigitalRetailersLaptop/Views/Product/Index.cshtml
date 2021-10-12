@@ -1,0 +1,45 @@
+﻿@model IEnumerable<DigitalRetailersLaptop.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class=" py- bg-dark">
+    <div style="background-image: url('https://images.unsplash.com/photo-1497250681960-ef046c08a56e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1887&q=80'); ">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-4">
+                        <div class="card shadow-sm">
+                            <img src="@item.Image" height="300">
+                            <div class="card-body">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th>Product Name</th>
+                                            <td>@item.Name</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Product Price</th>
+                                            <td>@item.Price</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-route-id="@item.Id">View Details</a>
+                                        <a class="btn btn-sm btn-outline-secondary" asp-controller="Cart" asp-action="Buy" asp-route-id="@item.Id">Add to Cart</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    </div>

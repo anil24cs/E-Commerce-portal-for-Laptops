@@ -1,0 +1,93 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using DigitalRetailersLaptop.Helpers;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - DigitalRetailersLaptop</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div style="background-image: url('https://images.unsplash.com/photo-1454117096348-e4abbeba002c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80'); ">
+        @if (SessionHelper.GetObjectFromJson<User>(Context.Session, "user") != null)
+        {
+            <header>
+                <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3">
+                    <div class="container">
+                        <a class="navbar-brand  text-white" asp-area="" asp-controller="Home" asp-action="Index">DigitalRetailersLaptop</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                            <ul class="navbar-nav flex-grow-1">
+                                <li class="nav-item">
+                                    <a class="nav-link text-white-50" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                </li>
+
+
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-white-50" asp-area="" asp-controller="ProductAdmin" asp-action="Index">Manage Product</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="text-end">
+                            <a asp-controller="Account" asp-action="Logout" class="btn btn-danger">Logout</a>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+        }
+        else
+        {
+            <header>
+                <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3">
+                    <div class="container">
+                        <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">DigitalRetailersLaptop</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                            <ul class="navbar-nav flex-grow-1">
+                                <li class="nav-item">
+                                    <a class="nav-link text-white-50" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white-50" asp-area="" asp-controller="Product" asp-action="Index">Product</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white-50" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="text-end">
+
+                            <a asp-controller="Account" asp-action="Index" class="btn btn-success m-2">Login</a>
+                            <a asp-controller="Account" asp-action="Register" class="btn btn-danger">Register</a>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+        }
+
+
+
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+        
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+    </div>
+</body>
+</html>
